@@ -1,0 +1,5 @@
+# FDB Requirements
+# Basic requirements for the FDB project
+
+# No external dependencies beyond Python standard library
+# The project uses SQLite which is included with Python
