@@ -1,0 +1,18 @@
+-- Schema for FDBDBA.FMS_LINK_T table
+-- FMS Link Table - stores linkage information between FMS and facilities
+
+CREATE TABLE FDBDBA.FMS_LINK_T (
+    LINK_ID VARCHAR(50) PRIMARY KEY,
+    FMSWIN_ID VARCHAR(50) NOT NULL,
+    FACILITY_ID VARCHAR(50),
+    LINK_TYPE VARCHAR(20),
+    LINK_STATUS VARCHAR(20),
+    CREATED_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    MODIFIED_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Create index on FMSWIN_ID for performance with the EXISTS query
+CREATE INDEX idx_fms_link_fmswin_id ON FDBDBA.FMS_LINK_T(FMSWIN_ID);
+
+-- Create index on FACILITY_ID for null checks
+CREATE INDEX idx_fms_link_facility_id ON FDBDBA.FMS_LINK_T(FACILITY_ID);
